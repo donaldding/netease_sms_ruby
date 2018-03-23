@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "阿里云短信sdk for ruby"
   spec.description   = "阿里云短信sdk for ruby"
-  spec.homepage      = "https://github.com/donaldding/"
+  spec.homepage      = "https://github.com/donaldding/netease_sms_ruby"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
