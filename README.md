@@ -1,8 +1,8 @@
 # NeteaseSms
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/netease_sms`. To experiment with that code, run `bin/console` for an interactive prompt.
+网易云短信 sdk for ruby
 
-TODO: Delete this and the text above, and describe your gem
+目前仅实现发送短信模板功能
 
 ## Installation
 
@@ -22,8 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'aliyun_live'
 
+client = AliyunLive::Client.new(your_access_id, your_access_secret)
+```
+
+发送模板短信
+```ruby
+template_id = '23421' #模板id
+mobiles = ['18575758458', '17545454587'] #接收者手机号数组
+params = ['1234']  #匹配模板里的参数
+client.send_sms(template_id, mobiles, params)
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
