@@ -20,18 +20,28 @@ module NeteaseSms
     end
 
     def send_sms(template_id, cellphones, params)
-      http_post({
+      host = 'https://api.netease.im/sms/sendtemplate.action'
+
+      http_post(host, {
         templateid: template_id, 
         mobiles: cellphones.to_json, 
         params: params.to_json
       })
     end
 
+    def check_status(sendid)
+      host = 'https://api.netease.im/sms/querystatus.action'
+
+      http_post(host, {
+        sendid: sendid
+      })
+    end
+    
+
 
     private
-    def http_post(data)
-      host = 'https://api.netease.im/sms/sendtemplate.action'
-      uri = URI.parse(host)
+    def http_post(url, data)
+      uri = URI.parse(url)
       https = Net::HTTP.new(uri.host, uri.port)
       https.use_ssl = true
       https.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -40,7 +50,7 @@ module NeteaseSms
       puts data
       req.set_form_data(data)
       resp = https.request(req)
-      puts JSON.parse resp.body
+      puts resp.body
     end
   
     def headers
